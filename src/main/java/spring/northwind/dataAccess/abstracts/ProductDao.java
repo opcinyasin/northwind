@@ -10,9 +10,9 @@ public interface ProductDao extends JpaRepository<Product,Integer> {
 
     Product getByProductName(String productsName);
 
-    Product getByProductNameAndCategory(String productName, int categoryId);
+    Product getByProductNameAndCategory_CategoryId(String productName, int categoryId);
 
-    List<Product> getByProductNameOrCategory(String productName, int categoryId);
+    List<Product> getByProductNameOrCategory_CategoryId(String productName, int categoryId);
 
     List<Product> getByCategoryIn(List<Integer> categories);
 
@@ -21,5 +21,5 @@ public interface ProductDao extends JpaRepository<Product,Integer> {
     List<Product> getByProductNameStartsWith(String productName);
 
     @Query("From Product where productName=:productName and category.categoryId=:categoryId")
-    List<Product> getByNameAndCategory(String productName, int categoryId);
+    List<Product> getByNameAndCategory_CategoryId(String productName, int categoryId);
 }

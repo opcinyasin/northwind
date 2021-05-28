@@ -13,13 +13,16 @@ public interface ProductService {
     Result add(Product product);
     Result delete(Product product);
 
+    DataResult<List<Product>> getAllSorted();
+    DataResult<List<Product>> getAll(int pageNo, int pageSize);
+
     DataResult<Product> getByProductName(String productsName);
 
-    DataResult<Product> getByProductNameAndCategory(String productName, int categoryId);
+    DataResult<Product> getByProductNameAndCategoryId(String productName, int categoryId);
 
-    DataResult<List<Product>> getByProductNameOrCategory(String productName, int categoryId);
+    DataResult<List<Product>> getByProductNameOrCategoryId(String productName, int categoryId);
 
-    DataResult<List<Product>> getByCategoryIn(List<Integer> categories);
+    DataResult<List<Product>> getByCategoryIdIn(List<Integer> categories);
 
     DataResult<List<Product>> getByProductNameContains(String productName);
 
