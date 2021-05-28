@@ -33,4 +33,14 @@ public class ProductsController {
     public Result delete(@RequestBody Product product){
         return productService.delete(product);
     }
+
+    @GetMapping("/getByProductName")
+    public DataResult<Product> getByProductName(@RequestParam String productName){
+        return productService.getByProductName(productName);
+    }
+
+    @GetMapping("/getByProductNameAndCategory")
+    public DataResult<Product> getByProductNameAndCategory(@RequestParam String productName, int categoryId){
+        return productService.getByProductNameAndCategory(productName,categoryId);
+    }
 }

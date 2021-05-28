@@ -24,7 +24,7 @@ public class ProductManager implements ProductService {
 
     @Override
     public DataResult<List<Product>> getAll() {
-        return new SuccessDataResult<List<Product>>(productDao.findAll(),"Data listelendi");
+        return new SuccessDataResult<List<Product>>(productDao.findAll(), "Data listelendi");
     }
 
     @Override
@@ -38,5 +38,40 @@ public class ProductManager implements ProductService {
     public Result delete(Product product) {
         productDao.delete(product);
         return new SuccessResult("Ürün silindi");
+    }
+
+    @Override
+    public DataResult<Product> getByProductName(String productsName) {
+        return new SuccessDataResult<Product>(productDao.getByProductName(productsName), "Ürün listelendi");
+    }
+
+    @Override
+    public DataResult<Product> getByProductNameAndCategory(String productName, int categoryId) {
+        return new SuccessDataResult<Product>(productDao.getByProductNameAndCategory(productName, categoryId), "Ürün listelendi");
+    }
+
+    @Override
+    public DataResult<List<Product>> getByProductNameOrCategory(String productName, int categoryId) {
+        return new SuccessDataResult<List<Product>>(productDao.getByProductNameOrCategory(productName, categoryId), "Data listelendi");
+    }
+
+    @Override
+    public DataResult<List<Product>> getByCategoryIn(List<Integer> categories) {
+        return new SuccessDataResult<List<Product>>(productDao.getByCategoryIn(categories), "Data listelendi");
+    }
+
+    @Override
+    public DataResult<List<Product>> getByProductNameContains(String productName) {
+        return new SuccessDataResult<List<Product>>(productDao.getByProductNameContains(productName),"Data listelendi");
+    }
+
+    @Override
+    public DataResult<List<Product>> getByProductNameStartsWith(String productName) {
+        return new SuccessDataResult<List<Product>>(productDao.getByProductNameStartsWith(productName),"Data listelendi");
+    }
+
+    @Override
+    public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
+        return new SuccessDataResult<List<Product>>(productDao.getByNameAndCategory(productName, categoryId),"Data listelendi");
     }
 }
