@@ -6,6 +6,7 @@ import spring.northwind.business.abstracts.ProductService;
 import spring.northwind.core.utilities.results.DataResult;
 import spring.northwind.core.utilities.results.Result;
 import spring.northwind.entities.concretes.Product;
+import spring.northwind.entities.dtos.ProductWithCategoryDto;
 
 import java.util.List;
 
@@ -77,5 +78,10 @@ public class ProductsController {
     @GetMapping("/getByNameAndCategory")
     public DataResult<List<Product>> getByNameAndCategory(@RequestParam String productName, @RequestParam int categoryId) {
         return productService.getByNameAndCategory(productName, categoryId);
+    }
+
+    @GetMapping("/getProductWithCategoryDetails")
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails(){
+        return this.productService.getProductWithCategoryDetails();
     }
 }
